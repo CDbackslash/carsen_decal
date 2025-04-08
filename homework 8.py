@@ -90,15 +90,15 @@ penguins = sns.load_dataset("penguins")
 # Create a figure with side-by-side subplots.
 fig, axes = plt.subplots(1,2, figsize=(12,6))
 # # Problem 3 # #
-# For the leftmost subplot, make a scatterplot, with a title, axis labels, and a legend
-axes[0].scatter(penguins['flipper_length_mm'], penguins['bill_length_mm'], label='Flipper length vs Bill length', color='blue')
-axes[0].set_title("Flipper length vs Bill length")
-axes[0].set_xlabel("Flipper length (mm)")
-axes[0].set_ylabel("Bill length (mm)")
-axes[0].legend()
+# For the leftmost subplot, make a seaborn scatterplot, with a title, axis labels, and a legend
+sns.scatterplot(data=penguins, x='flipper_length_mm', y='bill_length_mm', hue='species', ax=axes[0])
+axes[0].set_title("Scatterplot of Flipper Length vs Bill Length")
+axes[0].set_xlabel("Flipper Length (mm)")
+axes[0].set_ylabel("Bill Length (mm)")
+axes[0].legend(title='Species')
 # # Problem 4 # #
 # For the rightmost subplot, make a histogram of penguin body mass. 
-axes[1].hist(penguins['body_mass_g'], bins=20, color='orange')
+sns.histplot(data=penguins, x='body_mass_g', bins=20, ax=axes[1])
 axes[1].set_title("Histogram of Penguin Body Mass")
 axes[1].set_xlabel("Body mass (g)")
 axes[1].set_ylabel("Frequency")
